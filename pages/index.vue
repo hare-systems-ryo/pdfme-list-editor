@@ -237,7 +237,19 @@ const showInterface = () => {
     keys.push(...ObjectKeys(row));
   });
   const text = keys.map((row) => row + ' : string ;').join('\n');
-  modal.interface.state.text = text;
+  const interfaceText = `
+type InputRow = {
+    ${keys.map((row) => row + ' : string ;').join('\n\t')}
+}
+type Input = InputRow[];`;
+  const initFuncText = `
+const InitInputRow = () => {
+  return {
+      ${keys.map((row) => row + ' : ``,').join('\n\t')}
+  }
+};`;
+  modal.interface.state.interface = interfaceText;
+  modal.interface.state.initFunc = initFuncText;
   modal.interface.show();
 };
 
@@ -256,17 +268,26 @@ const fileName = computed(() => {
   return state.diff.pdfInfo?.fileName;
 });
 // - [ Generator ]--------------------------------------------------
+
+const clipboardCopy = (text: string) => {
+  // var str = 'コピーする文字';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text);
+    Toast.Success('Copy', '', 1500);
+  }
+};
 // ----------------------------------------------------------------------------
 // [ Modal ]
 interface Modal {
   menu: ModalControl;
-  interface: ModalControl<{ text: string }>;
+  interface: ModalControl<{ interface: string; initFunc: string }>;
 }
 const modal = reactive<Modal>({
   menu: InitModalControl(),
   interface: InitModalControl({
     state: {
-      text: '',
+      interface: '',
+      initFunc: '',
     },
   }),
 });
@@ -501,8 +522,29 @@ onMounted(async () => {
               </v-btn>
             </div>
             <div class="card-body flex-grow-1 flex-shrink-1 bg-back" style="overflow: auto">
-              <div class="bg- p-1" style="white-space: pre-line">
-                <nac-fc-textarea :data="modal.interface.state.text" readonly :rows="40" />
+              <div class="d-flex">
+                <div class="w-50 p-1" style="white-space: pre-line">
+                  <v-btn
+                    variant="flat"
+                    color="accent1"
+                    class="mb-1"
+                    @click="clipboardCopy(modal.interface.state.interface)"
+                  >
+                    Copy
+                  </v-btn>
+                  <nac-fc-textarea :data="modal.interface.state.interface" readonly :rows="40" />
+                </div>
+                <div class="w-50 p-1" style="white-space: pre-line">
+                  <v-btn
+                    variant="flat"
+                    color="accent1"
+                    class="mb-1"
+                    @click="clipboardCopy(modal.interface.state.initFunc)"
+                  >
+                    Copy
+                  </v-btn>
+                  <nac-fc-textarea :data="modal.interface.state.initFunc" readonly :rows="40" />
+                </div>
               </div>
             </div>
           </div>
