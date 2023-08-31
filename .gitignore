@@ -97,7 +97,8 @@ sw.*
 
 .vercel
 
-
 /_docker/volumes
 
 /public/assets/local/
+
+/com/pdf-list.ts
