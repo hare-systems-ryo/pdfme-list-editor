@@ -239,14 +239,14 @@ const showInterface = () => {
   const text = keys.map((row) => row + ' : string ;').join('\n');
   const interfaceText = `
 type InputRow = {
-    ${keys.map((row) => row + ' : string ;').join('\n\t')}
-}
+\t${keys.map((row) => row + ': string;').join('\n\t')}
+};
 type Input = InputRow[];`;
   const initFuncText = `
-const InitInputRow = () => {
+const InitInputRow = () :InputRow => {
   return {
-      ${keys.map((row) => row + ' : ``,').join('\n\t')}
-  }
+\t\t${keys.map((row) => row + ': ``,').join('\n\t\t')}
+  };
 };`;
   modal.interface.state.interface = interfaceText;
   modal.interface.state.initFunc = initFuncText;
