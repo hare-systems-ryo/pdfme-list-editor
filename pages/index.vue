@@ -241,7 +241,7 @@ const showInterface = () => {
 type InputRow = {
 \t${keys.map((row) => row + ': string;').join('\n\t')}
 };
-type Input = InputRow[];`;
+type Inputs = InputRow[];`;
   const initFuncText = `
 const InitInputRow = () :InputRow => {
   return {
