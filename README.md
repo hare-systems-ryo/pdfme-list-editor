@@ -66,6 +66,13 @@ ENV3_S3_SECRET_KEY=""
 
 ```
 
+
+## PDFファイルの指定
+
+以下ファイルの配列に追加する
+> com\pdf-list.ts
+
+
 # PDFME 本家さん
 
 PDFMEについてはこちら
