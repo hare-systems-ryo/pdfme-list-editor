@@ -1,0 +1,65 @@
+@import "@/assets/scss/_variables.scss";
+
+.card {
+    box-sizing    : border-box;
+    display       : flex;
+    flex-direction: column;
+
+    .card-header,
+    .card-footer {
+        flex: 0 0 auto;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+    }
+
+
+    //  border  -----------------------------------------------
+    border       : solid 1px white;
+    border-radius: $card-radius;
+
+
+    >:first-child.nac-accordion>.nac-accordion-container>*,
+    >:first-child {
+        border-top-left-radius : $card-radius;
+        border-top-right-radius: $card-radius;
+
+    }
+
+    >:last-child.nac-accordion>.nac-accordion-container>*,
+    >:last-child {
+        border-bottom-left-radius : $card-radius;
+        border-bottom-right-radius: $card-radius;
+    }
+
+
+    .card-header,
+    .card-body,
+    .card-footer {
+        // border          : solid 1px white;
+        // border-radius   : 0px;
+        background-color: white;
+        padding         : 12px;
+
+        &.slim {
+            padding: 4px;
+        }
+
+        @media screen and (min-width: #{ 0 }px) and (max-width: #{ 600 - 0.1}px) {
+            padding: 8px;
+
+            &.slim {
+                padding: 4px;
+            }
+        }
+    }
+
+    //  footer header display flex -----------------------------------------------
+    .card-footer,
+    .card-header {
+        display        : flex;
+        justify-content: space-between;
+        align-items    : center;
+    }
+}

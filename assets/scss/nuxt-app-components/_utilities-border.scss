@@ -1,0 +1,48 @@
+/* -----------------------------------------------------------------------------
+_utilities-border.scss
+-------------------------------------------------------------------------------
+
+------------------------------------
+[ border ]
+border
+
+
+.border-{theme}
+.border-top-{theme}
+.border-right-{theme}
+.border-bottom-{theme}
+.border-left-{theme}
+--------------------------------------------------------------------------------*/
+
+.border {
+    border-width: 1px !important;
+    border-style: solid !important;
+    border-color: transparent !important;
+}
+
+@each $d in $direction {
+
+    @each $theme,
+    $value in $v-theme-color {
+        .border#{$d}-#{$theme} {
+            border#{$d}-width: 1px !important;
+            border#{$d}-style: solid !important;
+            --border-color   : rgb(var(--v-theme-#{$theme})) !important;
+            border#{$d}-color: var(--border-color) !important;
+        }
+    }
+
+    @each $width in $border-width {
+        .border#{$d}-#{$width} {
+            border#{$d}-width :#{$width}px !important;
+        }
+
+    }
+}
+
+@each $key,
+$value in $border-rounded {
+    .radius-#{$key} {
+        border-radius: #{$value} !important;
+    }
+}

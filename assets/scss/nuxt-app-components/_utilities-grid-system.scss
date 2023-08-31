@@ -1,0 +1,201 @@
+/* -----------------------------------------------------------------------------
+_utilities-grid-system.scss
+--------------------------------------------------------------------------------
+<< How To Use >>
+------------------------------------
+[container]
+------
+container
+container-{BreakPoint}
+container-fluid
+
+------------------------------------
+[row]
+------
+row
+row-slim
+------------------------------------
+[col]
+x = [ 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10 , 11 , 12 ]
+------
+col
+col-{BreakPoint}
+col-{x}
+col-{BreakPoint}-{x}
+col-auto
+col-{BreakPoint}-auto
+--------------------------------------------------------------------------------*/
+@use "sass:math";
+
+.container,
+.container-fluid {
+    width        : 100%;
+    padding-left : map-get($v-grid-system, 'padding-x1');
+    padding-right: map-get($v-grid-system, 'padding-x1');
+
+    margin-right: auto;
+    margin-left : auto;
+}
+
+@each $breakpoint,
+$container-max-width in $v-container-max-widths {
+    $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint) {
+        .container#{$infix} {
+            max-width: $container-max-width;
+        }
+    }
+}
+
+.container,
+.container-fluid {
+    width        : 100%;
+    padding-left : map-get($v-grid-system, 'padding-x1');
+    padding-right: map-get($v-grid-system, 'padding-x1');
+    margin-right : auto;
+    margin-left  : auto;
+}
+
+@each $breakpoint,
+$container-max-width in $v-container-max-widths {
+    .container-#{$breakpoint} {
+        @extend .container-fluid;
+    }
+
+    @include media-breakpoint-up($breakpoint, $v-grid-breakpoints) {
+        %responsive-container-#{$breakpoint} {
+            max-width: $container-max-width;
+        }
+
+        $extend-breakpoint: true;
+
+        @each $name,
+        $width in $v-grid-breakpoints {
+            @if ($extend-breakpoint) {
+                $infix: breakpoint-infix($name, $v-grid-breakpoints);
+
+                .container#{$infix} {
+                    @extend %responsive-container-#{$breakpoint};
+                }
+
+                @if ($breakpoint==$name) {
+                    $extend-breakpoint: false;
+                }
+            }
+        }
+    }
+}
+
+.row {
+    display  : flex;
+    flex-wrap: wrap;
+
+    >* {
+        max-width: 100%;
+        flex     : 0 0 auto;
+    }
+
+    @each $breakpoint in map-keys($v-grid-breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+        @include media-breakpoint-up($breakpoint) {
+            >.col#{$infix} {
+                flex : 1 0 0%;
+                width: 0%;
+            }
+
+            >.col#{$infix}-auto {
+                flex : 0 0 auto;
+                width: auto;
+            }
+
+            @for $i from 1 through 12 {
+                >.col#{$infix}-#{$i} {
+                    width: percentage(math.div(1, 12) * $i);
+                }
+            }
+        }
+    }
+}
+
+
+.row {
+    margin-left : -#{map-get($v-grid-system, 'padding-x1')};
+    margin-right: -#{map-get($v-grid-system, 'padding-x1')};
+
+    &.slim {
+        margin-left : -#{map-get($v-grid-system, 'padding-x0')};
+        margin-right: -#{map-get($v-grid-system, 'padding-x0')};
+    }
+
+    @each $breakpoint in map-keys($v-grid-breakpoints) {
+        $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+        @include media-breakpoint-up($breakpoint) {
+
+            >.col#{$infix}-auto,
+            >.col#{$infix} {
+                padding-left : map-get($v-grid-system, 'padding-x1');
+                padding-right: map-get($v-grid-system, 'padding-x1');
+            }
+
+            @for $i from 1 through 12 {
+                >.col#{$infix}-#{$i} {
+                    padding-left : map-get($v-grid-system, 'padding-x1');
+                    padding-right: map-get($v-grid-system, 'padding-x1');
+                }
+            }
+
+            &.slim {
+
+                >.col#{$infix}-auto,
+                >.col#{$infix} {
+                    padding-left : map-get($v-grid-system, 'padding-x0');
+                    padding-right: map-get($v-grid-system, 'padding-x0');
+                }
+
+                @for $i from 1 through 12 {
+                    >.col#{$infix}-#{$i} {
+                        padding-left : map-get($v-grid-system, 'padding-x0');
+                        padding-right: map-get($v-grid-system, 'padding-x0');
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+
+// data-device="sp tablet pc" で消す事ができる便利コード
+[data-device*="sp"][data-device*="tablet"]:not([data-device*="pc"]) {
+    @media screen and (min-width: #{ $app-breake-tablet-pc }px) {
+        display: none !important;
+    }
+}
+
+[data-device*="sp"]:not([data-device*="tablet"]):not([data-device*="pc"]) {
+    @media screen and (min-width: #{ $app-breake-sp-tablet }px) {
+        display: none !important;
+    }
+}
+
+:not([data-device*="sp"]):not([data-device*="tablet"])[data-device*="pc"] {
+    @media screen and (min-width: #{ 0 }px) and (max-width: #{ $app-breake-tablet-pc - 0.1}px) {
+        display: none !important;
+    }
+}
+
+
+:not([data-device*="sp"])[data-device*="tablet"][data-device*="pc"] {
+    @media screen and (min-width: #{ 0 }px) and (max-width: #{ $app-breake-sp-tablet - 0.1}px) {
+        display: none !important;
+    }
+}
+
+[data-device*="sp"]:not([data-device*="tablet"])[data-device*="pc"] {
+    @media screen and (min-width: #{ $app-breake-sp-tablet }px) and (max-width: #{ $app-breake-tablet-pc - 0.1}px) {
+        display: none !important;
+    }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "pdfme-list-editor",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Hare-Systems",
+  "license": "MIT",
+  "scripts": {
+    "build": "npx nuxi cleanup && npx nuxi build",
+    "dev": "  npx nuxi cleanup && npx nuxi dev --dotenv .env",
+    "generate": "npx nuxi cleanup && nuxi generate",
+    "preview": "nuxi preview",
+    "postinstall": "npx nuxi prepare ",
+    "lint": "eslint 'src/**/*.{ts,vue}'"
+  },
+  "volta": {
+    "dotenv-cli": "7.2.1",
+    "npm-run-all": "4.1.5",
+    "node": "18.15.0",
+    "npm": "9.6.7"
+  },
+  "devDependencies": {
+    "@invictus.codes/nuxt-vuetify": "^0.3.0",
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.1.1",
+    "@nuxtjs/eslint-config-typescript": "^12.0.0",
+    "@nuxtjs/eslint-module": "^4.1.0",
+    "@types/node": "^18.16.19",
+    "@types/tabulator-tables": "^5.4.8",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.44.0",
+    "nuxt": "^3.6.2",
+    "sass": "^1.63.6"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.391.0",
+    "@aws-sdk/s3-request-presigner": "^3.391.0",
+    "@pdfme/common": "^2.2.0",
+    "@pdfme/generator": "^2.2.0",
+    "@pdfme/ui": "^2.2.0",
+    "@pinia/nuxt": "^0.4.11",
+    "@vueuse/core": "^10.1.2",
+    "@vueuse/integrations": "^10.1.2",
+    "base64-arraybuffer": "^1.0.2",
+    "bignumber.js": "^9.1.1",
+    "csv-stringify": "^6.4.0",
+    "dayjs": "^1.11.9",
+    "flatpickr": "^4.6.13",
+    "focus-trap": "^7.4.3",
+    "pg": "^8.11.1",
+    "pinia": "^2.1.3",
+    "tabulator-tables": "^5.5.0"
+  },
+  "overrides": {
+    "vue": "latest"
+  }
+}

@@ -1,0 +1,315 @@
+/*-------------------------------------------------------------------
+vc-form-control.style.scss
+-------------------------------------------------------------------*/
+
+//  -------------------------------------------------------------------
+
+
+
+.nac-control {
+
+  &,
+  * {
+    position  : relative;
+    padding   : 0px;
+    margin    : 0px;
+    box-sizing: border-box;
+  }
+
+  //Formコントロール基本
+  //基礎
+  height          : auto;
+  min-height      : #{$nac-control-height};
+  min-width       : 80px;
+  max-width       : 100%;
+  background-clip : padding-box;
+  border          :solid 1px transparent;
+  border-radius   : 0px;
+  transition      : box-shadow 150ms ease-in-out,
+  background-color 150ms ease-in-out;
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : nowrap;
+  justify-content: space-between;
+
+
+  //Controlのメイン要素
+  >.nac-c-center {
+    flex           : 1 1 auto;
+    min-width      : 0;
+    display        : flex;
+    flex-direction : column;
+    flex-wrap      : nowrap;
+    justify-content: flex-start;
+    align-items    : stretch;
+
+    .nac-c-header {
+      width          : 100%;
+      flex           : 0 0 auto;
+      display        : flex;
+      flex-wrap      : wrap;
+      justify-content: flex-start;
+      align-items    : center;
+      padding        : 2px 3px 0px 3px;
+      overflow       : hidden;
+
+      .nac-c-header-left {
+        flex: 0 0 auto;
+
+        //placeholder
+        .nac-c-header-placeholder {
+          padding: 1px 0px 0px 0px;
+        }
+      }
+
+      //ヘッダー用テキストアイコン表示
+      .nac-c-header-right {
+        flex           : 1 1 auto;
+        display        : flex;
+        flex-wrap      : wrap;
+        justify-content: flex-end;
+        align-items    : center;
+
+        >* {
+          flex         : 0 0 auto;
+          margin       : 0px 1px;
+          padding      : 1px 3px;
+          border-radius: 2px;
+          height       : auto;
+
+          &:last-child {
+            margin: 0px 0px 0 1px;
+          }
+        }
+      }
+    }
+
+    //入力コントロールの表示位置
+    .nac-c-input {
+      flex       : 1 1 auto;
+      width      : 100%;
+      height     : 100%;
+      min-height : 0;
+      display    : flex;
+      align-items: center;
+      line-height: 1em;
+    }
+  }
+
+  >.nac-c-left,
+  >.nac-c-right {
+    flex   : 0 0 auto;
+    display: flex;
+
+    //アイコン
+    >[data-icon] {
+      width          : 40px;
+      display        : flex;
+      justify-content: center;
+      align-items    : center;
+      cursor         : pointer;
+
+      &::before {
+        content : '';
+        display : block;
+        position: absolute;
+        display : none;
+        height  : calc(100% - 4px);
+        top     : 2px;
+        width   : 1px;
+      }
+
+      &[data-sep="left"]::before {
+        display: block;
+        left   : 0px;
+      }
+
+      &[data-sep="right"]::before {
+        display: block;
+        right  : 0px;
+      }
+
+      &::after {
+        display : block;
+        position: relative;
+        overflow: visible;
+      }
+
+      &[data-icon="warn"]::after {
+        content: '\f071';
+        color  : --vcas-controlIcon--warn-fore-color;
+      }
+
+      &[data-icon="delete"]::after {
+        content: '\f55a';
+        color  : --vcas-controlIcon--delete-fore-color;
+      }
+
+      &[data-icon="calendar"]::after {
+        content: '\f073';
+        color  : --vcas-controlIcon--calendar-fore-color;
+      }
+    }
+  }
+
+
+  //-[ Font ]------------------------------------------------------------------------------------
+  font-family: inherit;
+  font-size  : 1rem;
+  font-weight: inherit;
+
+  *:not(i) {
+    font-family: inherit;
+    font-size  : 1em;
+    font-weight: inherit;
+  }
+
+  //placeholder
+  .nac-c-placeholder {
+    font-size  : 0.8rem;
+    line-height: 1em;
+  }
+
+  //ヘッダー用テキストアイコン表示
+  .nac-c-header-right * {
+    font-size  : 0.7rem;
+    line-height: 1em;
+  }
+
+  //アイコン
+  .nac-c-right,
+  .nac-c-left {
+
+    >[data-icon] {
+      font-size: 1rem;
+    }
+
+    >[data-icon]::after {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+    }
+
+    >[data-icon="warn"]::after {
+      content: '\f071';
+    }
+
+    >[data-icon="delete"]::after {
+      content: '\f55a';
+    }
+
+    >[data-icon="calendar"]::after {
+      content: '\f071';
+    }
+  }
+
+  //-[ Color ]------------------------------------------------------------------------------------
+
+  // .nac-c-input {
+  //   background-color: map-get($nac-control-color, 'disabled-back');
+  //   color           : map-get($nac-control-color, 'disabled-fore');
+  // }
+
+  background-color: map-get($nac-control-color, 'default-back');
+  color           : map-get($nac-control-color, 'default-fore');
+  border-color    : map-get($nac-control-color, 'default-line');
+
+  &.warn:not(.diff) {
+    box-shadow: map-get($nac-control-box-shadow, 'warn');
+  }
+
+  &.diff {
+    box-shadow: map-get($nac-control-box-shadow, 'diff');
+  }
+
+  &.activate {
+    box-shadow: map-get($nac-control-box-shadow, 'activate');
+  }
+
+  //上部ラベル系 > Placeholder 
+  .nac-c-placeholder {
+    background-color: transparent;
+    color           : map-get($nac-control-header, 'placeholder-fore');
+  }
+
+  //上部ラベル系 > アイコン > 必須アイコン
+  .nac-c-header-right {
+    >[data-type='require'] {
+      background-color: map-get($nac-control-header, 'icon-require-back');
+      color           : map-get($nac-control-header, 'icon-require-fore');
+    }
+
+
+    >[data-type='max-word-message'] {
+      background-color: map-get($nac-control-header-icon, 'max-word-message-default-back');
+      color           : map-get($nac-control-header-icon, 'max-word-message-default-fore');
+
+      &[data-maxLen='0'] {
+        display: none;
+      }
+
+      &[data-last='3'],
+      &[data-last='4'] {
+        background-color: map-get($nac-control-header-icon, 'max-word-message-lebel1-back');
+        color           : map-get($nac-control-header-icon, 'max-word-message-lebel1-fore');
+      }
+
+      &[data-last='1'],
+      &[data-last='2'] {
+        background-color: map-get($nac-control-header-icon, 'max-word-message-lebel2-back');
+        color           : map-get($nac-control-header-icon, 'max-word-message-lebel2-fore');
+      }
+
+      &[data-last='0'] {
+        background-color: map-get($nac-control-header-icon, 'max-word-message-lebel3-back');
+        color           : map-get($nac-control-header-icon, 'max-word-message-lebel3-fore');
+      }
+    }
+
+  }
+
+  .nac-c-left>*,
+  .nac-c-right>* {
+
+    &::before {
+      background-color: map-get($nac-control-icon, 'divider-back');
+    }
+
+
+    &[data-icon="warn"]::after {
+      color: map-get($nac-control-icon, 'icon-warn-fore');
+    }
+
+    &[data-icon="delete"]::after {
+      color: map-get($nac-control-icon, 'icon-delete-fore');
+    }
+
+    &[data-icon="calendar"]::after {
+      color: map-get($nac-control-icon, 'icon-calendar-fore');
+    }
+  }
+
+  &.disabled {
+    background-color: map-get($nac-control-color, 'disabled-back');
+    color           : map-get($nac-control-color, 'disabled-fore');
+
+    .nac-c-header-right>* {
+      background-color: map-get($nac-control-header, 'icon-disabled-back');
+      color           : map-get($nac-control-header, 'icon-disabled-fore');
+    }
+
+    .nac-c-left>*,
+    .nac-c-right>* {
+      &[data-icon]:not([data-icon="warn"]) {
+        cursor: default;
+      }
+
+      &[data-icon]:not([data-icon="warn"])::after {
+        color: map-get($nac-control-color, 'disabled-fore');
+      }
+    }
+  }
+}
+
+
+
+//  signature

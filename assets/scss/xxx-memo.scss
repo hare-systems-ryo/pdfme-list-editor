@@ -1,0 +1,215 @@
+/* -----------------------------------
+  xxx-memo.scss
+  これはmemoです。反映はされません
+----------------------------------- */
+//基本の文字色と背景色
+$default-fore   :#222 !default;
+$default-back   :#babac9 !default;
+// --------------------------
+//テーマ
+$theme-main0    :#192a61;
+$theme-main1    :#1c03a2;
+$theme-main2    :#4443ff;
+$theme-main3    :#628cff;
+$theme-accent1  :#eb6600;
+$theme-accent2  :#ffac7c;
+$theme-info     :#ac80ff; // 原則BTNでは使用しない
+$theme-link     :#0fa17e;
+$theme-download :#11691f;
+$theme-success  :#2bb60c;
+$theme-warning  :#efb819;
+$theme-error    :#d80329;
+$theme-white    :#FFF;
+$theme-black    :#000; // 原則BTNでは使用しない
+$theme-dark     :#224466;
+$theme-gray     :#babac9;
+$theme-back     :#EDF2F7; // 原則BTNでは使用しない
+// --------------------------
+
+
+.media {
+  @media screen and (min-width: #{ 0 }px) and (max-width: #{ 800 - 0.1}px) {
+    // width: 10px;
+  }
+
+  @media screen and (min-width: #{ 800 }px) {
+    // width: 10px;
+  }
+
+  // -----------------------------------------------------------------
+
+  @media screen and (min-width: #{ 0 }px) and (max-width: #{ $app-breake-sp-tablet - 0.1}px) {
+    display: none !important;
+  }
+
+  @media screen and (min-width: #{ $app-breake-sp-tablet }px) {
+    display: flex !important;
+  }
+
+  // -----------------------------------------------------------------
+  @media screen and (min-width: #{ 0 }px) and (max-width: #{ $app-breake-sp-tablet - 0.1}px) {
+    display: none !important;
+  }
+
+  @media screen and (min-width: #{ $app-breake-sp-tablet }px) and (max-width: #{ $app-breake-tablet-pc - 0.1}px) {
+    display: none !important;
+  }
+
+  @media screen and (min-width: #{ $app-breake-tablet-pc }px) {
+    display: flex !important;
+  }
+}
+
+.fontawoseme {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+}
+
+// cursor-pointer
+// cursor-default
+
+// .userselect-none 
+
+
+// d-flex
+// flex-row
+// flex-row-reverse
+// flex-column
+// flex-wrap
+// flex-nowrap
+// justify-content-start
+// justify-content-end
+// justify-content-center
+// justify-content-between
+// justify-content-around
+// justify-content-evenly
+// align-items-start
+// align-items-end
+// align-items-center
+// align-items-baseline
+// align-items-stretch
+// flex-grow-0
+// flex-grow-1
+// flex-shrink-0
+// flex-shrink-1
+
+
+
+// 600
+// 800
+// 1000
+// 1200
+// 1400
+// 1600
+// 1800
+
+
+
+
+
+
+
+
+.flextemplate {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  // --------
+  display        : flex;
+  flex-direction : row;
+  flex-wrap      : nowrap;
+  justify-content: flex-start;
+  align-items    : center;
+  // --------
+  //子要素の並ぶ向き
+  flex-direction : row;
+  flex-direction : row-reverse;
+  flex-direction : column;
+  flex-direction : column-reverse;
+  // 子要素の折り返し
+  flex-wrap      : nowrap;
+  flex-wrap      : wrap;
+  flex-wrap      : wrap-reverse;
+  // 水平方向の揃え
+  justify-content: flex-start;
+  justify-content: flex-end;
+  justify-content: center;
+  justify-content: space-between;
+  justify-content: space-around;
+  // 垂直方向の揃え
+  align-items    : stretch;
+  align-items    : flex-start;
+  align-items    : flex-end;
+  align-items    : center;
+  align-items    : baseline;
+  // 複数行にした時の揃え
+  align-content  : space-between;
+
+  // --------
+  .item1 {
+    flex       : 0 1 auto;
+    // --------
+    order      : 0;
+    order      : 1;
+    // --------
+    flex-grow  : 0;
+    flex-grow  : 1;
+    // --------
+    flex-shrink: 0;
+    flex-shrink: 1;
+    // --------
+    flex-basis : auto;
+    flex-basis : 200px;
+    flex-basis : 30%;
+    // --------
+    align-self : flex-end;
+  }
+}
+
+
+// white-space-nowrap
+// white-space-prewrap
+// white-space-preline
+
+
+.aspect-container {
+  --aspect-rate   : 66.66%; //default
+  padding-top     : var(--aspect-rate);
+  // --aspect-rate:   100%  /* 1:1 */
+  // --aspect-rate:    75%; /* 4:3 */
+  // --aspect-rate: 66.66%; /* 3:2 */
+  // --aspect-rate: 56.25%; /* 16:9 */
+  // --aspect-rate:   150%; /* 2:3 */
+  // --aspect-rate:   200%; /* 1:2 */
+}
+
+
+
+.text-overflow-ellipsis {
+  white-space  : nowrap !important;
+  overflow     : hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* ----------------------------
+
+modal
+<i class="fa-solid fa-window-restore me-1"></i>
+
+Link
+<i class="fa-solid fa-up-right-from-square"></i>
+
+close
+<i class="fa-solid fa-xmark me-1"></i>
+
+download
+<i class="fa-solid fa-cloud-arrow-down me-1"></i>
+
+stock image template 
+<div class="aspect-container">
+<div class="d-flex-cc bg-dark border border-main1 radius-2">
+  <v-img  :src=""  class="h-100 w-100"  contain  ></v-img>
+</div>
+</div>
+
+---------------------------- */

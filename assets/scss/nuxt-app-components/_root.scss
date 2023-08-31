@@ -1,0 +1,126 @@
+@import "@/assets/scss/_variables.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+//---------------------------------------------------------------------
+
+
+html {
+    overflow: auto;
+}
+
+body {
+    padding         : 0;
+    margin          : 0;
+    background-color: $default-back;
+    color           : $default-fore;
+}
+
+* {
+    padding : 0;
+    margin  : 0;
+    position: relative;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+ol,
+ul {
+    padding-left: 2rem;
+}
+
+ol,
+ul,
+dl {
+    margin-top   : 0;
+    margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+    margin-bottom: 0;
+}
+
+dt {
+    font-weight: 700;
+}
+
+dd {
+
+    margin-bottom: .5rem;
+    margin-left  : 0; // 1
+}
+
+small {
+    font-size: 0.8em;
+}
+
+a {
+    color          : #{$default-fore};
+    text-decoration: underline;
+
+    &:hover {
+        color          :#{$default-fore};
+        text-decoration: null;
+    }
+}
+
+pre {
+    display      : block;
+    margin-top   : 0; // 1
+    margin-bottom: 1rem; // 2
+    overflow     : auto; // 3
+    font-size    : 1rem;
+
+    // Account for some code outputs that place code tags in pre tags
+    code {
+        font-size : 1rem;
+        color     : inherit;
+        word-break: normal;
+    }
+}
+
+figure {
+    margin: 0 0 1rem;
+}
+
+label {
+    display: inline-block; // 1
+}
+
+
+::-moz-focus-inner {
+    padding     : 0;
+    border-style: none;
+}
+
+
+textarea {
+    resize: vertical; // 1
+}
+
+fieldset {
+    min-width: 0; // 1
+    padding  : 0; // 2
+    margin   : 0; // 2
+    border   : 0; // 2
+}
+
+
+
+iframe {
+    border: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+output {
+    display: inline-block;
+}

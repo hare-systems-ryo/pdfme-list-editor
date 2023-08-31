@@ -1,0 +1,41 @@
+//アニメーション用keyframes
+
+@keyframes base-loader {
+    0% {
+        left     : 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        left     : 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    51% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,54 @@
+/* -----------------------------------------------------------------------------
+_utilities-etc.scss
+--------------------------------------------------------------------------------*/
+
+.userselect-none {
+    -moz-user-select   : none;
+    -webkit-user-select: none;
+    -ms-user-select    : none;
+    user-select        : none;
+}
+
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.cursor-default {
+    cursor: default !important;
+}
+
+.rotate {
+    transition: all 300ms;
+}
+
+
+
+@each $breakpoint in map-keys($v-grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint) {
+
+        @each $d in '0',
+        '90',
+        'n90',
+        '180',
+        'n180',
+        '270',
+        'n270',
+        '360',
+        'n360' {
+            .rotate#{$infix}-#{$d} {
+                transform: rotate(#{$d}deg);
+            }
+
+            .rotateX#{$infix}-#{$d} {
+                transform: rotateX(#{$d}deg);
+            }
+
+            .rotateY#{$infix}-#{$d} {
+                transform: rotateY(#{$d}deg);
+            }
+        }
+    }
+}

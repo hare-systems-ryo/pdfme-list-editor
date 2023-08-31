@@ -1,0 +1,154 @@
+// prettier-ignore
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+// @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Prompt:wght@500&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Prompt:wght@500&display=swap');
+
+html {
+    width       : 100%;
+    height      : 100%;
+    overflow    : auto;
+    // ダブルタップ拡大無効
+    touch-action: manipulation;
+}
+
+body {
+    // 
+    width                : 100%;
+    height               : 100%;
+    // 
+    font-family          : 'Noto Sans JP', sans-serif;
+    font-weight          : 400;
+    font-size            : 16px;
+    // 
+    overscroll-behavior  : none;
+    overscroll-behavior-y: none;
+    overflow-y           : visible;
+    overflow-x           : hidden;
+    background-color     : #cbc6d4;
+}
+
+
+
+
+body.lang-en {
+    font-family: 'Prompt', sans-serif;
+}
+
+body.lang-ja {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.f-logo {
+    font-family: 'Prompt', sans-serif;
+    font-weight: 400;
+}
+
+// -------------------------------------------------------------------------------------------
+/*スクロールバー*/
+::-webkit-scrollbar {
+    width           : 12px;
+    height          : 12px;
+    border-radius   : 12px;
+    background-color: rgb(202, 204, 216);
+    cursor          : pointer;
+}
+
+/*スクロールバーの軌道*/
+::-webkit-scrollbar-track {
+    border-radius            : 12px;
+    // box-shadow      : inset 0 0 6px rgba(0, 0, 0, .1);
+    // box-shadow      : inset 0 0 6px 2px rgba(31, 31, 58, 0.3);
+    // box-shadow         : inset 0 0 4px 2px rgba(40, 40, 255, 0.428);
+    box-shadow               : inset 0 0 1px 1px rgba(40, 40, 255, 0.428);
+    // background-color      : rgb(200, 200, 200);
+    background-color         : rgb(255, 255, 255);
+    margin                   : 0px;
+    margin-top               : 0px;
+}
+
+
+/*スクロールバーの動く部分*/
+::-webkit-scrollbar-thumb {
+    background-color      : rgba(4, 40, 65, 0.5);
+    // border-radius   : 6px;
+    // border-radius      : 2px;
+    border-radius         : 12px;
+    box-shadow            : inset 0 0 1px 1px rgb(189, 192, 255);
+    background-color      : rgb(105, 145, 255);
+}
+
+
+
+//--------------------
+.text-outline-white {
+    text-shadow:
+        2px 2px 2px white, -2px -2px 2px white,
+        -2px 2px 2px white, 2px -2px 2px white,
+        -1px -1px 0 white, -1px 0 0 white, -1px 1px 0 white,
+        0 -1px 0 white, 0 1px 0 white,
+        1px -1px 0 white, 1px 0 0 white, 1px 1px 0 white;
+    ;
+    // -webkit-text-stroke: 1px #ffffff;
+}
+
+.text-overflow-ellipsis {
+    white-space  : nowrap !important;
+    overflow     : hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+
+
+.aspect-container {
+    --aspect-rate: 66.66%;
+
+    &::before {
+        content    : '';
+        display    : block;
+        padding-top: var(--aspect-rate);
+    }
+
+    /* 3:2 */
+    >div {
+        position: absolute;
+        inset   : 0 0 0 0;
+    }
+}
+
+
+// 自動スクロール時の目安タグ用
+.scroll-to-elm {
+    position      : absolute;
+    left          : 0;
+    top           : 0;
+    bottom        : 0;
+    opacity       : 0;
+    pointer-events: none;
+    width         : 100%;
+    z-index       : -1;
+
+    &.header-shift {
+
+        --shift-y: 0px;
+
+        @media screen and (min-width: #{ 0 }px) and (max-width: #{ $app-breake-sp-tablet - 0.1}px) {
+            transform : translateY(calc(-#{$app-header-height-mobile}px - var(--shift-y)));
+            height    : calc(100% + #{$app-header-height-mobile}px + var(--shift-y));
+        }
+
+        @media screen and (min-width: #{ $app-breake-sp-tablet  }px) {
+            transform : translateY(calc(-#{$app-header-height-pc}px + var(--shift-y)));
+            height    : calc(100% + #{$app-header-height-pc}px + var(--shift-y));
+        }
+    }
+
+
+    &.debug {
+        opacity         : 0.6;
+        background-color: red;
+        z-index         : 99999999;
+    }
+}

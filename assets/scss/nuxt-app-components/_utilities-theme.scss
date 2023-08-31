@@ -1,0 +1,51 @@
+@each $key,
+$value in $v-theme-color {
+
+    //背景同一テーマの時
+    [class*="hover:#{$key}"].hover,
+    [class*="hover:#{$key}"]:hover {
+        &:not(.disabled):not(disabled):not(.activate):not(.active) {
+            cursor          : pointer;
+            --hover-color   : #{map-get($map:$v-theme-hover-color, $key:$key)};
+            background-color: var(--hover-color) !important;
+        }
+    }
+
+    [class*="hover:#{$key}-light"].hover,
+    [class*="hover:#{$key}-light"]:hover {
+        &:not(.disabled):not(disabled):not(.activate):not(.active) {
+            cursor          : pointer;
+            --hover-color   : #{map-get($map:$v-theme-hover-color-light, $key:$key)};
+            background-color: var(--hover-color) !important;
+        }
+    }
+}
+
+
+@each $breakpoint in map-keys($v-grid-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+    @include media-breakpoint-up($breakpoint) {
+
+        .bg#{$infix}-transparent {
+            --bg-color      : transparent;
+            background-color: var(--bg-color) !important;
+        }
+
+        @each $key,
+        $value in $v-theme-color {
+
+            .bg#{$infix}-#{$key} {
+                --bg-color      : #{map-get($map:$v-theme-color, $key:$key)};
+                background-color: var(--bg-color) !important;
+            }
+
+            .bg#{$infix}-#{$key}-light {
+                --bg-color      : #{map-get($map:$v-theme-hover-color-light, $key:$key)};
+                background-color: var(--bg-color) !important;
+            }
+
+        }
+
+    }
+}

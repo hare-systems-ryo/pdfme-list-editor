@@ -1,0 +1,133 @@
+/*-------------------------------------------------------------------
+vc-form-control.style.scss
+-------------------------------------------------------------------*/
+
+// @import 'flatpickr';
+
+//-------------------------------------------------------------------
+
+$control-line-color :$theme-main0 !default;
+$control-back-color :#ffffff !default;
+
+@mixin formgroup($direction) {
+  position       : relative;
+  display        : flex;
+  flex-direction : $direction;
+  justify-content: space-between;
+  align-items    : stretch;
+  border-radius  : 0px;
+  border         : 1px solid #{$control-line-color};
+
+}
+
+.form-group-icon {
+  width          : 2em;
+  flex           : 0 0 auto;
+  flex-grow      : 0 !important;
+  height         : auto;
+  padding        : 0 0.5em;
+  min-height     : 0px;
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+.form-group {
+  $direction: row;
+  @include formgroup($direction);
+
+
+  >.form-group-cell {
+    flex : 0 0 auto !important;
+    width: 50% !important;
+
+    &.with-icon {
+      width: calc(50% - 1em) !important;
+    }
+  }
+
+  >* {
+    // display      : block !important;
+    flex         : 1 1 auto !important;
+    border-width : 0px !important;
+    border-radius: 0px !important;
+    min-height   : 40px !important;
+  }
+
+  >*:last-child {
+    border-top   : solid 0px #{$control-line-color} !important;
+    border-right : solid 0px #{$control-line-color} !important;
+    border-bottom: solid 0px #{$control-line-color} !important;
+    border-left  : solid 0px #{$control-line-color} !important;
+  }
+
+  >*:not(:last-child) {
+    border-top   : solid 0px #{$control-line-color} !important;
+    border-right : solid 1px #{$control-line-color} !important;
+    border-bottom: solid 0px #{$control-line-color} !important;
+    border-left  : solid 0px #{$control-line-color} !important;
+  }
+}
+
+@each $breakpoint in map-keys($v-grid-breakpoints) {
+  $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+  @include media-breakpoint-up($breakpoint) {
+
+    .form-group#{$infix}-column {
+      $direction: column !important;
+      @include formgroup($direction);
+
+      .form-group-icon {
+        width: 100% !important;
+      }
+
+      >*:last-child {
+        border-top   : solid 0px #{$control-line-color} !important;
+        border-right : solid 0px #{$control-line-color} !important;
+        border-bottom: solid 0px #{$control-line-color} !important;
+        border-left  : solid 0px #{$control-line-color} !important;
+      }
+
+      >*:not(:last-child) {
+        border-top   : solid 0px #{$control-line-color} !important;
+        border-right : solid 0px #{$control-line-color} !important;
+        border-bottom: solid 1px #{$control-line-color} !important;
+        border-left  : solid 0px #{$control-line-color} !important;
+      }
+    }
+
+    .form-group#{$infix}-row {
+      $direction: row !important;
+      @include formgroup($direction);
+
+      .form-group-icon {
+        width: 2em !important;
+      }
+
+      >.form-group-cell {
+        flex : 0 0 auto !important;
+        width: 50% !important;
+
+        &.with-icon {
+          width: calc(50% - 1em) !important;
+        }
+      }
+
+
+      >*:last-child {
+        border-top   : solid 0px #{$control-line-color} !important;
+        border-right : solid 0px #{$control-line-color} !important;
+        border-bottom: solid 0px #{$control-line-color} !important;
+        border-left  : solid 0px #{$control-line-color} !important;
+      }
+
+      >*:not(:last-child) {
+        border-top   : solid 0px #{$control-line-color} !important;
+        border-right : solid 1px #{$control-line-color} !important;
+        border-bottom: solid 0px #{$control-line-color} !important;
+        border-left  : solid 0px #{$control-line-color} !important;
+      }
+    }
+  }
+}

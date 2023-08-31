@@ -1,0 +1,218 @@
+// 基本的なデバイス毎のブレイク設定
+$app-breake-sp-tablet :800 !default;
+$app-breake-tablet-pc :1200 !default;
+//テーマ名
+
+$default-fore :#222 !default;
+$default-back :#babac9 !default;
+
+// --------------------------
+$theme-main0    :#192a61 !default;
+$theme-main1    :#1c03a2 !default;
+$theme-main2    :#4443ff !default;
+$theme-main3    :#628cff !default;
+$theme-accent1  :#eb6600 !default;
+$theme-accent2  :#ffac7c !default;
+$theme-info     :#ac80ff !default; // 原則BTNでは使用しない
+$theme-link     :#0fa17e !default;
+$theme-download :#11691f !default;
+$theme-success  :#2bb60c !default;
+$theme-warning  :#efb819 !default;
+$theme-error    :#d80329 !default;
+$theme-white    :#FFF !default;
+$theme-black    :#000 !default; // 原則BTNでは使用しない
+$theme-dark     :#224466 !default;
+$theme-gray     :#babac9 !default;
+$theme-back     :#EDF2F7 !default; // 原則BTNでは使用しない
+// --------------------------
+
+
+$v-theme-color:( //
+    'main0'   :$theme-main0,
+    'main1' :$theme-main1,
+    'main2' :$theme-main2,
+    'main3' :$theme-main3,
+    'accent1' :$theme-accent1,
+    'accent2' :$theme-accent2,
+    'info':$theme-info,
+    'link':$theme-link,
+    'download':$theme-download,
+    'success' :$theme-success,
+    'warning':$theme-warning,
+    'error':$theme-error,
+    'white' :$theme-white,
+    'black' :$theme-black,
+    'dark' :$theme-dark,
+    'gray' :$theme-gray,
+    'back' :$theme-back,
+) !default;
+
+// ホバー時のスタイル
+$v-theme-hover-color:( //
+    'main0'         :adjust-color(adjust-color($theme-main0, $lightness: 10%), $red: -40),
+    'main1' :adjust-color(adjust-color($theme-main1, $lightness: 10%), $red: -40),
+    'main2' :adjust-color(adjust-color($theme-main2, $lightness: 10%), $red: -26),
+    'main3' :adjust-color($theme-main3, $lightness: 10%),
+    'accent1':adjust-color($theme-accent1, $lightness: 16%),
+    'accent2' :adjust-color($theme-accent2, $lightness: 10%),
+    'info' :adjust-color($theme-info, $lightness: 10%),
+    'link':adjust-color($theme-link, $lightness: 10%),
+    'download':adjust-color($theme-download, $lightness: 10%),
+    'success' :adjust-color($theme-success, $lightness: 3%),
+    'warning' :adjust-color($theme-warning, $lightness: 19%),
+    'error' :adjust-color($theme-error, $lightness: 10%),
+    'white':adjust-color($theme-white, $lightness: -10%),
+    'black':adjust-color($theme-black, $lightness: 20%),
+    'dark':adjust-color($theme-dark, $lightness: 10%),
+    'gray':adjust-color($theme-gray, $lightness: 10%),
+    'back':adjust-color(adjust-color($theme-back, $lightness: -4%), $red: -5),
+) !default;
+
+// ホバー時のスタイル 白系の背景色用
+$v-theme-hover-color-light:( //
+    'main0'               :adjust-color(adjust-color($theme-main0, $lightness: 32%), $red: -26),
+    'main2' :adjust-color(adjust-color($theme-main2, $lightness: 32%), $red: -26),
+    'main3' :adjust-color($theme-main3, $lightness: 26%),
+    'accent1':adjust-color($theme-accent1, $lightness: 40%),
+    'accent2' :adjust-color($theme-accent2, $lightness: 21%),
+    'info' :adjust-color($theme-info, $lightness: 20%),
+    'link':adjust-color($theme-link, $lightness: 45%),
+    'download':adjust-color($theme-download, $lightness: 100%),
+    'success' :adjust-color($theme-success, $lightness: 46%),
+    'warning' :adjust-color($theme-warning, $lightness: 36%),
+    'error' :adjust-color($theme-error, $lightness: 50%),
+    'white':adjust-color($theme-white, $lightness: -10%),
+    'black':adjust-color($theme-black, $lightness: 80%),
+    'dark':adjust-color($theme-dark, $lightness: 50%),
+    'gray':adjust-color($theme-gray, $lightness: 50%),
+    'back':adjust-color(adjust-color($theme-back, $lightness: -4%), $red: -5),
+) !default;
+
+
+// Font
+$v-font-size:( //
+    '1'     :2.5rem,
+    '2' :2rem,
+    '3' :1.6rem,
+    '4' :1.3rem,
+    '5' :1.15rem,
+    '6' :1rem,
+    '7' :0.92rem,
+    '8' :0.82rem,
+    '9' :0.75rem,
+) !default;
+
+
+// card要素の角丸
+$card-radius :6px !default;
+
+
+// グリッドシステム
+
+$v-grid-breakpoints: ( // 
+    sp             : 0,
+    600: 600px,
+    800: 800px,
+    1000: 1000px,
+    1200: 1200px,
+    1400: 1400px,
+    1600: 1600px,
+    1800: 1800px,
+) !default;
+$v-container-max-widths: ( // 
+    600                : 540px,
+    800: 760px,
+    1000: 940px,
+    1200: 1140px,
+    1400: 1340px,
+    1600: 1540px,
+    1800 : 1740px) !default;
+
+//v-sytle-grid-system
+$v-grid-system:( //
+    padding-x1:12px,
+    padding-x0:4px,
+) !default;
+
+//v-sytle-space
+$v-space-item: ( //
+    0        : 0px,
+    1: 4px,
+    2: 8px,
+    3: 12px,
+    4: 16px,
+    5: 20px,
+    6: 24px,
+    7: 28px,
+    8: 32px,
+    9: 36px,
+    10: 40px,
+    11:44px,
+    12: 48px,
+    13: 52px,
+    14: 56px,
+    15: 60px,
+    16: 64px,
+) !default;
+
+// サイズ
+
+
+$v-size :( //
+    10  :10%,
+    20:20%,
+    25:25%,
+    30:30%,
+    40:40%,
+    50:50%,
+    60:60%,
+    70:70%,
+    75:75%,
+    80:80%,
+    90:90%,
+    100:100%,
+) !default;
+
+// 線
+
+$border-width: //
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7,
+8,
+9,
+10,
+11,
+12 !default;
+
+// 線
+$direction: //
+null,
+-top,
+-right,
+-bottom,
+-left !default;
+
+
+$border-rounded :( //
+    0           :0,
+    1 :4px,
+    2 :8px,
+    3:12px,
+    4:16px,
+    5:20px,
+) !default;
+
+// tabulator
+$headerBackgroundColor:#687b96 !default; //border to tabulator
+$headerTextColor      :#ffffff !default; //header text color
+$rowAltBackgroundColor:#f5f8ff !default; //table row background color
+$rowHoverBackground   :#dbddff !default; //row background color on hover
+$footerBackgroundColor:#3e7edd !default; //border to tabulator
+$footerBackgroundColor:#434c58 !default; //border to tabulator
+$footerTextColor      :#ffffff !default; //footer text color

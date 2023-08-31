@@ -1,0 +1,79 @@
+//Vutifyの大文字ボタン回避
+.v-btn {
+    text-transform   : none !important;
+    // height        : 42px;
+}
+
+.v-btn.v-btn--density-default {
+    --v-btn-height: 42px;
+}
+
+
+// -------------------------------------------------------------------------------------------
+
+.v-breadcrumbs {
+    // m-0 p-0 d-flex flex-column flex-800-row align-items-start align-items-800-center
+    margin          : 0 !important;
+    padding         : 4px !important;
+    display         : flex !important;
+    background-color: white;
+
+    font-size: 16px !important;
+
+    .v-breadcrumbs-divider {
+        font-size      : 1em !important;
+        width          : 16px !important;
+        height         : 30px !important;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+        padding        : 2px 0px 0px 0px !important;
+
+        &::before {
+            content    : '\f0da';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            line-height: 1em;
+            width      : 10px !important;
+        }
+    }
+
+    .v-breadcrumbs-item {
+        font-size      : 1em !important;
+        height         : 30px !important;
+        padding        : 4px 8px;
+        border-radius  : 4px;
+        text-decoration: none !important;
+        transition     : all 200ms;
+
+        >span {
+            height: 22px !important;
+        }
+    }
+
+    @media screen and (min-width: #{ 0 }px) and (max-width: #{ $app-breake-sp-tablet - 0.1}px) {
+        flex-wrap: wrap !important;
+        padding  : 2px 4px !important;
+
+        .v-breadcrumbs-item {
+            margin: 2px 0;
+        }
+
+        .v-breadcrumbs-item:first-child {
+            width: 100%;
+        }
+
+        .v-breadcrumbs-item:not(:first-child) {
+            width: calc(100% - 24px);
+        }
+
+        .v-breadcrumbs-divider {
+            padding: 2px 0 2px 10px !important;
+        }
+    }
+
+    @media screen and (min-width: #{ $app-breake-sp-tablet }px) {
+        flex-direction: row !important;
+        align-items   : center !important;
+    }
+}

@@ -1,0 +1,42 @@
+x-logging: &logging
+  driver: json-file
+  options:
+    max-file: '1'
+    max-size: '10m'
+#----------------------
+services:
+  nuxt:
+    image: pdfme-list-editor
+    container_name: pdfme-list-editor
+    build:
+      context: .
+      dockerfile: ./_docker/Dockerfile
+    volumes:
+      - ./:/usr/app/
+    ports:
+      - "50000:3000"
+    environment:
+      ENV1_NAME: ${ENV1_NAME}
+      ENV1_ENV: ${ENV1_ENV}
+      ENV1_S3_ENDPOINT: ${ENV1_S3_ENDPOINT}
+      ENV1_S3_REGION: ${ENV1_S3_REGION}
+      ENV1_S3_BUCKET_NAME: ${ENV1_S3_BUCKET_NAME}
+      ENV1_S3_SECRET_KEY: ${ENV1_S3_SECRET_KEY}
+      ENV1_S3_ACCESS_KEY: ${ENV1_S3_ACCESS_KEY}
+      # staging
+      ENV2_NAME: ${ENV2_NAME}
+      ENV2_ENV: ${ENV2_ENV}
+      ENV2_S3_ENDPOINT: ${ENV2_S3_ENDPOINT}
+      ENV2_S3_REGION: ${ENV2_S3_REGION}
+      ENV2_S3_BUCKET_NAME: ${ENV2_S3_BUCKET_NAME}
+      ENV2_S3_ACCESS_KEY: ${ENV2_S3_ACCESS_KEY}
+      ENV2_S3_SECRET_KEY: ${ENV2_S3_SECRET_KEY}
+
+      # development
+      ENV3_NAME: ${ENV3_NAME}
+      ENV3_ENV: ${ENV3_ENV}
+      ENV3_S3_ENDPOINT: ${ENV3_S3_ENDPOINT}
+      ENV3_S3_REGION: ${ENV3_S3_REGION}
+      ENV3_S3_BUCKET_NAME: ${ENV3_S3_BUCKET_NAME}
+      ENV3_S3_ACCESS_KEY: ${ENV3_S3_ACCESS_KEY}
+      ENV3_S3_SECRET_KEY: ${ENV3_S3_SECRET_KEY}

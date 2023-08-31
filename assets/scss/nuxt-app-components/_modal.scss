@@ -1,0 +1,22 @@
+.overlay-modal {
+    position       : relative;
+    inset          : 0 0 0 0;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    width          : 100vw;
+    height         : 100vh;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+
+    >*:first-child {
+        max-width : 100%;
+        max-height: 100%;
+    }
+
+    .modal-card {
+        box-shadow: 0 0 6px 4px rgba(31, 88, 202, 0.6);
+    }
+}

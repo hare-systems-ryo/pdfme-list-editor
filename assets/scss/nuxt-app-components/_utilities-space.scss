@@ -1,0 +1,143 @@
+/* -----------------------------------------------------------------------------
+ v-style-size-space
+ file-size:18kb
+--------------------------------------------------------------------------------*/
+
+.fc-height {
+   height: 42px !important;
+}
+
+
+
+
+@each $breakpoint in map-keys($v-grid-breakpoints) {
+   $infix: breakpoint-infix($breakpoint, $v-grid-breakpoints);
+
+   @include media-breakpoint-up($breakpoint) {
+
+
+      //size ---------------------------------------
+      .w#{$infix}-auto {
+         width: auto !important;
+      }
+
+      .h#{$infix}-auto {
+         height: auto !important;
+      }
+
+      @each $size,
+      $value in $v-size {
+         .w#{$infix}-#{$size} {
+            width: $value !important;
+         }
+
+         .h#{$infix}-#{$size} {
+            height: $value !important;
+         }
+      }
+
+      //margin-auto ---------------------------------------
+      .m#{$infix}-auto {
+         margin: auto !important;
+      }
+
+      .mx#{$infix}-auto,
+      .me#{$infix}-auto {
+         margin-right: auto !important;
+      }
+
+      .mx#{$infix}-auto,
+      .ms#{$infix}-auto {
+         margin-left: auto !important;
+      }
+
+      .my#{$infix}-auto,
+      .mb#{$infix}-auto {
+         margin-bottom: auto !important;
+      }
+
+      .my#{$infix}-auto,
+      .mt#{$infix}-auto {
+         margin-top: auto !important;
+      }
+
+      @each $no,
+      $value in $v-space-item {
+
+         //margin ---------------------------------------
+         .m#{$infix}-#{$no} {
+            margin: $value !important;
+         }
+
+         .my#{$infix}-#{$no},
+         .mt#{$infix}-#{$no} {
+            margin-top: $value !important;
+         }
+
+         .my#{$infix}-#{$no},
+         .mb#{$infix}-#{$no} {
+            margin-bottom: $value !important;
+         }
+
+         .mx#{$infix}-#{$no},
+         .ms#{$infix}-#{$no} {
+            margin-left: $value !important;
+         }
+
+         .mx#{$infix}-#{$no},
+         .me#{$infix}-#{$no} {
+            margin-right: $value !important;
+         }
+
+         //margin nega ---------------------------------------
+         .m#{$infix}-n#{$no} {
+            margin: -$value !important;
+         }
+
+         .my#{$infix}-n#{$no},
+         .mt#{$infix}-n#{$no} {
+            margin-top: -$value !important;
+         }
+
+         .my#{$infix}-n#{$no},
+         .mb#{$infix}-n#{$no} {
+            margin-bottom: -$value !important;
+         }
+
+         .mx#{$infix}-n#{$no},
+         .ms#{$infix}-n#{$no} {
+            margin-left: -$value !important;
+         }
+
+         .mx#{$infix}-n#{$no},
+         .me#{$infix}-n#{$no} {
+            margin-right: -$value !important;
+         }
+
+         //padding ---------------------------------------
+         .p#{$infix}-#{$no} {
+            padding: $value !important;
+         }
+
+         .py#{$infix}-#{$no},
+         .pt#{$infix}-#{$no} {
+            padding-top: $value !important;
+         }
+
+         .py#{$infix}-#{$no},
+         .pb#{$infix}-#{$no} {
+            padding-bottom: $value !important;
+         }
+
+         .px#{$infix}-#{$no},
+         .ps#{$infix}-#{$no} {
+            padding-left: $value !important;
+         }
+
+         .px#{$infix}-#{$no},
+         .pe#{$infix}-#{$no} {
+            padding-right: $value !important;
+         }
+      }
+   }
+}

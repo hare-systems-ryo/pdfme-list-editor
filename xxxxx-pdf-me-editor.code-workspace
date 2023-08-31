@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": ".",
+      "name": "pdf-me-editor"
+    }
+  ],
+  "settings": {
+    "files.autoSave": "afterDelay",
+    "files.exclude": {
+      "**/node_modules": true
+    }
+  }
+}

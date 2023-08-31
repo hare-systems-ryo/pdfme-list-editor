@@ -1,0 +1,92 @@
+/* -----------------------------------------------------------------------------
+_utilities-text.scss
+--------------------------------------------------------------------------------*/
+
+@each $key,
+$value in $v-font-size {
+
+    .fs-#{$key} {
+        font-size: #{$value} !important;
+    }
+}
+
+.text-center {
+    text-align     : center !important;
+    justify-content: center !important;
+}
+
+.text-start {
+    text-align     : left !important;
+    justify-content: flex-start !important;
+}
+
+.text-end {
+    text-align     : right !important;
+    justify-content: flex-end !important;
+}
+
+.text-wrap {
+    white-space: normal !important;
+}
+
+.text-nowrap {
+    white-space: nowrap !important;
+}
+
+.text-break {
+    word-wrap : break-word !important;
+    word-break: break-word !important;
+}
+
+.text-lowercase {
+    text-transform: lowercase !important;
+}
+
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+
+.text-capitalize {
+    text-transform: capitalize !important;
+}
+
+.fw-bold {
+    font-weight: bold !important;
+}
+
+.fw-normal {
+    font-weight: normal !important;
+}
+
+.lh-1 {
+    line-height: 1em !important;
+}
+
+
+
+.white-space-nowrap {
+    white-space: nowrap;
+}
+
+.white-space-prewrap {
+    white-space: pre-wrap;
+}
+
+.white-space-preline {
+    white-space: pre-line;
+}
+
+
+@each $key,
+$value in $v-theme-color {
+    .text-#{$key} {
+        color: #{darken(saturate($value,5%),4%)} !important;
+    }
+}
+
+.user-select-none {
+    -moz-user-select   : none;
+    -webkit-user-select: none;
+    -ms-user-select    : none;
+    user-select        : none;
+}
