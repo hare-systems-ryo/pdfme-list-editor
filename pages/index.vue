@@ -436,7 +436,7 @@ onMounted(async () => {
                 Close
               </v-btn>
             </div>
-            <div class="card-body bg-back">
+            <div class="card-body bg-back" style="overflow-y: auto;">
               <div class="">環境選択</div>
               <div class="d-flex mx-n2">
                 <template v-for="(key, index) in envConfigListKeys" :key="index">
@@ -472,22 +472,34 @@ onMounted(async () => {
                 </template>
               </div>
               <div class="">PDFファイル選択</div>
-              <div class="d-flex mx-n2">
+              <div class="row">
                 <template v-for="(row, index) in PdfInfoList" :key="index">
-                  <v-btn
-                    variant="flat"
-                    class="border-main1 mx-1"
-                    :class="{
-                      'bg-accent1':
-                        state.data.pdfInfo?.fileDir === row.fileDir && state.data.pdfInfo?.fileName === row.fileName,
-                      'bg-accent1-light':
-                        state.data.pdfInfo?.fileDir !== row.fileDir || state.data.pdfInfo?.fileName !== row.fileName,
-                    }"
-                    @click="state.data.pdfInfo = row"
-                  >
-                    {{ row.fileDir }}
-                    {{ row.fileName }}
-                  </v-btn>
+                  <template v-if="index === 0 || PdfInfoList[index - 1].fileDir !== PdfInfoList[index].fileDir">
+                    <div class="col-12 my-1">
+                      <div class="bg-accent1-light p-1">
+                        {{ row.fileDir }}
+                      </div>
+                    </div>
+                  </template>
+                  <div class="col-6 my-1">
+                    <v-btn
+                      block
+                      variant="flat"
+                      class="border-main1"
+                      :class="{
+                        'bg-accent1':
+                          state.data.pdfInfo?.fileDir === row.fileDir && state.data.pdfInfo?.fileName === row.fileName,
+                        'bg-accent1-light':
+                          state.data.pdfInfo?.fileDir !== row.fileDir || state.data.pdfInfo?.fileName !== row.fileName,
+                      }"
+                      @click="state.data.pdfInfo = row"
+                    >
+                      {{ row.fileName }}
+                    </v-btn>
+                  </div>
+                  <div class="col-6 my-1 d-flex align-items-center align-items-start">
+                    {{ row.displayName }}
+                  </div>
                 </template>
               </div>
             </div>
