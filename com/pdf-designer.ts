@@ -85,41 +85,41 @@ export const SetTemplateTypeSafe = (template: PdfTemplate, fileName: string, def
   if ('meta' in template && 'updateAt' in template.meta) {
     baseTemplate.meta.updateAt = template.meta.updateAt;
   }
-  if ('schemas' in template) {
-    baseTemplate.schemas = template.schemas;
-  }
   // schemas
   if ('schemas' in template) {
     baseTemplate.schemas = template.schemas;
   }
-  // columns
-  if ('columns' in template) {
-    baseTemplate.columns = template.columns;
-  } else {
-    baseTemplate.columns = [];
-    if (template.schemas.length > 0) {
-      template.schemas.forEach((row: any) => {
-        Object.keys(row).forEach((key) => {
-          (baseTemplate.columns as string[]).push(key);
+  if (baseTemplate.schemas.length > 0) {
+    // columns
+    if ('columns' in template) {
+      baseTemplate.columns = template.columns;
+    } else {
+      baseTemplate.columns = [];
+      if (template.schemas.length > 0) {
+        template.schemas.forEach((row: any) => {
+          Object.keys(row).forEach((key) => {
+            (baseTemplate.columns as string[]).push(key);
+          });
         });
-      });
+      }
+    }
+    // sampledata
+    if ('sampledata' in template) {
+      baseTemplate.sampledata = template.sampledata;
+    } else {
+      baseTemplate.sampledata = [];
+      if (template.schemas.length > 0) {
+        template.schemas.forEach((row: any) => {
+          const sampleData: any = {};
+          Object.keys(row).forEach((key) => {
+            sampleData[key] = 'sample data';
+          });
+          (baseTemplate.sampledata as any).push(sampleData);
+        });
+      }
     }
   }
-  // sampledata
-  if ('sampledata' in template) {
-    baseTemplate.sampledata = template.sampledata;
-  } else {
-    baseTemplate.sampledata = [];
-    if (template.schemas.length > 0) {
-      template.schemas.forEach((row: any) => {
-        const sampleData: any = {};
-        Object.keys(row).forEach((key) => {
-          sampleData[key] = 'sample data';
-        });
-        (baseTemplate.sampledata as any).push(sampleData);
-      });
-    }
-  }
+
   // schemas
   if ('list' in template) {
     baseTemplate.list = template.list;
